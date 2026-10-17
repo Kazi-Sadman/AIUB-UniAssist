@@ -6,6 +6,7 @@ import DepartmentsPage from "./pages/DepartmentsPage";
 import StudentsPage from "./pages/StudentsPage";
 import CoursesPage from "./pages/CoursesPage";
 import EnrollmentsPage from "./pages/EnrollmentsPage";
+import UniAssist from "./pages/UniAssist";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/students" element={<StudentsPage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/enrollments" element={<EnrollmentsPage />} />
+          <Route path="/uni-assist" element={<UniAssist />} />
         </Routes>
       </main>
     </div>
