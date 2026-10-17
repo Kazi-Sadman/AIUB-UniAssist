@@ -83,7 +83,10 @@ Thesis/Capstone Defense:
 
 Thesis/Capstone Failure:
 - A failing grade in Thesis or Capstone prevents graduation until the required course/project is successfully retaken and defended.
-
+For AIUB BSc in CSE:
+- 12 credits: General regular undergraduate course load, according to the policy I referenced.
+- 18 credits: Standard maximum including thesis, based on the policy text you provided.
+- 21 credits: Possible overload including thesis, if CGPA is at least 3.50 and departmental advisor approval is obtained.
 
 ================================================================================
 TOPIC: Internship and Practicum Requirements
