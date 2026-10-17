@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { LayoutGrid, Building2, GraduationCap, BookOpen, ClipboardList } from "lucide-react";
+import { LayoutGrid, Building2, GraduationCap, BookOpen, ClipboardList, Sparkles } from "lucide-react";
 
 const navItems = [
   { to: "/", label: "Overview", icon: LayoutGrid, end: true, accent: "#8B95A3" },
@@ -8,6 +8,7 @@ const navItems = [
   { to: "/students", label: "Students", icon: GraduationCap, accent: "#3E7BA6" },
   { to: "/courses", label: "Courses", icon: BookOpen, accent: "#4F8767" },
   { to: "/enrollments", label: "Enrollments", icon: ClipboardList, accent: "#A6314A" },
+  { to: "/uni-assist", label: "UniAssist AI", icon: Sparkles, accent: "#E4C34E" },
 ];
 
 export default function Sidebar() {
