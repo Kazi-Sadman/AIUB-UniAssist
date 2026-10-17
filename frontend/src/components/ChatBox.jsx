@@ -40,7 +40,7 @@ export default function ChatBox() {
         ...prev,
         { role: "assistant", text: err.message || "Something went wrong.", isError: true },
       ]);
-      toast.error(err.message || "UniAssist AI could not answer that question.");
+      toast.error(err.message || "AIUB UniAssist AI could not answer that question.");
     } finally {
       setSending(false);
     }
@@ -52,7 +52,7 @@ export default function ChatBox() {
         {messages.length === 0 ? (
           <EmptyState
             icon={Sparkles}
-            title="Ask UniAssist AI anything"
+            title="Ask AIUB UniAssist AI anything"
             description="Admission requirements, tuition fees, attendance policy, scholarships, exam rules, faculty contacts, and more - answered from the official university documents."
           />
         ) : (
