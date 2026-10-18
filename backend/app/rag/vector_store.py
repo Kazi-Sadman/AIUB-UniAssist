@@ -22,12 +22,10 @@ from app.rag.config import (
 
 @lru_cache(maxsize=1)
 def get_qdrant_client() -> QdrantClient:
-    """Reused QdrantClient - created once, never per request."""
     return QdrantClient(
         url=QDRANT_URL,
         api_key=QDRANT_API_KEY or None,
     )
-
 def ensure_collection() -> None:
     """Create the collection only if it does not exist."""
     client = get_qdrant_client()
