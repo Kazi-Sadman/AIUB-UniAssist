@@ -13,22 +13,29 @@ from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 from qdrant_client.http.exceptions import UnexpectedResponse
 
-from app.rag.config import EMBEDDING_DIMENSION, QDRANT_COLLECTION, QDRANT_URL
-
+from app.rag.config import (
+    EMBEDDING_DIMENSION,
+    QDRANT_COLLECTION,
+    QDRANT_URL,
+    QDRANT_API_KEY,
+)
 
 @lru_cache(maxsize=1)
 def get_qdrant_client() -> QdrantClient:
     """Reused QdrantClient - created once, never per request."""
-    return QdrantClient(url=QDRANT_URL)
-
+    return QdrantClient(
+        url=QDRANT_URL,
+        api_key=QDRANT_API_KEY or None,
+    )
 
 def ensure_collection() -> None:
-    """Create the Qdrant collection if it doesn't already exist."""
+    """Create the collection only if it does not exist."""
     client = get_qdrant_client()
-    try:
-        client.get_collection(QDRANT_COLLECTION)
-    except (UnexpectedResponse, ValueError, Exception):
-        client.recreate_collection(
+
+    if not client.collection_exists(
+        collection_name=QDRANT_COLLECTION
+    ):
+        client.create_collection(
             collection_name=QDRANT_COLLECTION,
             vectors_config=qmodels.VectorParams(
                 size=EMBEDDING_DIMENSION,

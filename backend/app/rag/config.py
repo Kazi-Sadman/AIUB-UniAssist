@@ -40,10 +40,12 @@ EMBEDDING_DIMENSION = int(os.getenv("EMBEDDING_DIMENSION", "1024"))
 # ---------------------------------------------------------------------------
 # Qdrant
 # ---------------------------------------------------------------------------
-
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
-QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "university_documents")
-
+QDRANT_COLLECTION = os.getenv(
+    "QDRANT_COLLECTION",
+    "university_documents",
+)
 # ---------------------------------------------------------------------------
 # Chunking
 # ---------------------------------------------------------------------------
