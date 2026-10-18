@@ -415,6 +415,32 @@ late fee, registration confirmation
 ================================================================================
 TOPIC 17: COMMON REGISTRATION SCENARIOS
 =======================================
+---
+TOPIC 18
+SOURCE_DOCUMENT: AIUB Undergraduate Academic Regulations
+FACULTY: Science and Technology (FST)
+DEPARTMENT: Computer Science (CS / BSCS)
+SUBJECT: Thesis and Capstone Project Registration Rules
+LAST_UPDATED: 2026
+---
+
+[CHUNK_START]
+CONTEXT: This document defines the academic eligibility prerequisites and credit load restrictions for students registering for their undergraduate thesis or capstone project at the American International University-Bangladesh (AIUB).
+
+RULE 1: THESIS CREDIT PREREQUISITES
+To register for the BSc in Computer Science (BSCS) Research-Based Thesis or Project-Based Thesis, a student must meet both of the following mandatory requirements:
+- The student must have completed a minimum of 100 credits.
+- The student must have successfully completed the course "Research Methodology".
+
+RULE 2: ALTERNATIVE CAPSTONE (SOFTWARE PROJECT) PREREQUISITES
+- If a student registers for "Software Project I" instead of a traditional Thesis, the minimum completion requirement is reduced to 70 credits.
+
+RULE 3: MAXIMUM CREDIT LOAD WITH THESIS
+When a student is registered for their Thesis course in a semester, their maximum academic workload is restricted as follows:
+- Total Maximum Credits: The student can take a maximum of 12 credits in total for that entire semester.
+- Course Combination Rule: The student is permitted to take a maximum of 9 credits of regular academic courses running concurrently alongside their active thesis registration.
+[CHUNK_END]
+
 
 Scenario 1:
 A student wants to register for a course but has not passed its

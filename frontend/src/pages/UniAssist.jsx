@@ -6,8 +6,8 @@ export default function UniAssist() {
   return (
     <div>
       <PageHeader
-        eyebrow="Registrar / UniAssist AI"
-        title="UniAssist AI"
+        eyebrow="Assistant"
+        title="AIUB UniAssist AI"
         description="A hybrid RAG assistant that answers questions from the university's official knowledge base - admissions, fees, policies, courses, faculty, and more."
       />
       <ChatBox />

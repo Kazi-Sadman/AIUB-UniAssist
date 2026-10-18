@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Plus, Trash2, Building2 } from "lucide-react";
+import { Plus, Trash2, Building2, Search } from "lucide-react";
 import departmentApi from "../api/departmentApi";
 import PageHeader from "../components/PageHeader";
 import Modal from "../components/Modal";
 import ConfirmDialog from "../components/ConfirmDialog";
 import DepartmentForm from "../components/DepartmentForm";
 import EmptyState from "../components/EmptyState";
+import TableToolbar from "../components/TableToolbar";
 import { useToast } from "../context/ToastContext";
 
 export default function DepartmentsPage() {
@@ -15,6 +16,7 @@ export default function DepartmentsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [pendingDelete, setPendingDelete] = useState(null);
+  const [searchText, setSearchText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
   const load = async () => {
@@ -33,6 +35,13 @@ export default function DepartmentsPage() {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Only the rows that match the search box are shown.
+  const searchWords = searchText.trim().toLowerCase();
+  const visibleDepartments = departments.filter(
+    (d) =>
+      d.name.toLowerCase().includes(searchWords) || String(d.department_id).includes(searchWords),
+  );
 
   const handleCreate = async (payload) => {
     setSubmitting(true);
@@ -76,6 +85,15 @@ export default function DepartmentsPage() {
         }
       />
 
+      <TableToolbar
+        searchText={searchText}
+        onSearchTextChange={setSearchText}
+        placeholder="Search departments…"
+        shownCount={visibleDepartments.length}
+        totalCount={departments.length}
+        recordName="departments"
+      />
+
       <div className="card overflow-hidden">
         {loading ? (
           <div className="p-6 space-y-3">
@@ -94,38 +112,46 @@ export default function DepartmentsPage() {
               </button>
             }
           />
+        ) : visibleDepartments.length === 0 ? (
+          <EmptyState
+            icon={Search}
+            title="No matching departments"
+            description="Try a different name or clear the search box."
+          />
         ) : (
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-line text-left">
-                <th className="eyebrow font-normal px-6 py-3.5">ID</th>
-                <th className="eyebrow font-normal px-6 py-3.5">Name</th>
-                <th className="eyebrow font-normal px-6 py-3.5 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {departments.map((d) => (
-                <tr
-                  key={d.department_id}
-                  className="border-b border-line last:border-0 hover:bg-surface-raised/50 transition-colors"
-                >
-                  <td className="px-6 py-3.5 font-mono text-muted">#{d.department_id}</td>
-                  <td className="px-6 py-3.5 text-parchment font-medium">{d.name}</td>
-                  <td className="px-6 py-3.5">
-                    <div className="flex justify-end">
-                      <button
-                        className="icon-btn hover:!text-crimson"
-                        onClick={() => setPendingDelete(d)}
-                        title="Delete department"
-                      >
-                        <Trash2 size={15} />
-                      </button>
-                    </div>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-line text-left">
+                  <th className="eyebrow font-normal px-6 py-3.5">ID</th>
+                  <th className="eyebrow font-normal px-6 py-3.5">Name</th>
+                  <th className="eyebrow font-normal px-6 py-3.5 text-right">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {visibleDepartments.map((d) => (
+                  <tr
+                    key={d.department_id}
+                    className="border-b border-line last:border-0 hover:bg-surface-raised/50 transition-colors"
+                  >
+                    <td className="px-6 py-3.5 font-mono text-muted">#{d.department_id}</td>
+                    <td className="px-6 py-3.5 text-parchment font-medium">{d.name}</td>
+                    <td className="px-6 py-3.5">
+                      <div className="flex justify-end">
+                        <button
+                          className="icon-btn hover:!text-crimson"
+                          onClick={() => setPendingDelete(d)}
+                          title="Delete department"
+                        >
+                          <Trash2 size={15} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
 
