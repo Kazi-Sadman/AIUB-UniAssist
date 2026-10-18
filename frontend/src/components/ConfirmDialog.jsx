@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AlertTriangle } from "lucide-react";
 
 export default function ConfirmDialog({ open, title, message, onCancel, onConfirm, busy }) {
+  // Escape cancels the dialog, except while a delete request is still running.
+  useEffect(() => {
+    if (!open) return undefined;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape" && !busy) onCancel();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open, busy, onCancel]);
+
   if (!open) return null;
 
   return (
@@ -11,7 +21,12 @@ export default function ConfirmDialog({ open, title, message, onCancel, onConfir
         if (e.target === e.currentTarget) onCancel();
       }}
     >
-      <div className="w-full max-w-sm card animate-modalIn p-6">
+      <div
+        role="alertdialog"
+        aria-modal="true"
+        aria-label={title}
+        className="w-full max-w-sm card !bg-surface animate-modalIn p-6"
+      >
         <div className="flex items-center gap-3 mb-3">
           <div className="w-9 h-9 rounded-full bg-crimson/15 border border-crimson/40 flex items-center justify-center shrink-0">
             <AlertTriangle size={17} className="text-crimson" />

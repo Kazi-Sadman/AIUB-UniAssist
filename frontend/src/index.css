@@ -35,12 +35,14 @@ body {
   background: #384253;
 }
 
+/* Small muted label used for breadcrumbs, table headings and captions. */
 .eyebrow {
-  @apply font-mono text-[11px] tracking-[0.18em] uppercase text-muted;
+  @apply text-xs font-medium text-muted;
 }
 
+/* Cards are slightly see-through so the floating particles glow faintly behind them. */
 .card {
-  @apply bg-surface border border-line rounded-xl shadow-card;
+  @apply bg-surface/85 backdrop-blur-sm border border-line rounded-xl shadow-card;
 }
 
 .input-field {
@@ -69,4 +71,23 @@ body {
 
 .seal-accent {
   box-shadow: inset 3px 0 0 0 var(--accent-color, #c9a227);
+}
+
+/* Visible keyboard focus for buttons, links and anything tabbable. */
+:focus-visible {
+  outline: 2px solid rgba(228, 195, 78, 0.7);
+  outline-offset: 2px;
+}
+
+/* Respect the operating-system "reduce motion" setting for all CSS animations.
+   (The particle canvas checks the same setting in JavaScript.) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

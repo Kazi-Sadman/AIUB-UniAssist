@@ -131,21 +131,21 @@ Dense Search       Keyword Search
 
 ## Technology Stack
 
-| Technology | Purpose |
-|---|---|
-| React | Frontend |
-| Vite | Frontend development/build |
-| FastAPI | Backend REST API |
-| Python | Backend and RAG implementation |
-| SQLAlchemy | Database ORM |
-| SQLite | Relational database |
-| Pydantic | API validation |
-| LangChain | RAG/LLM orchestration |
-| BAAI/bge-m3 | Multilingual embeddings |
-| Qdrant | Vector database |
-| BM25 | Keyword retrieval |
-| RRF | Retrieval fusion |
-| OpenRouter | LLM API gateway |
+| Technology  | Purpose                        |
+| ----------- | ------------------------------ |
+| React       | Frontend                       |
+| Vite        | Frontend development/build     |
+| FastAPI     | Backend REST API               |
+| Python      | Backend and RAG implementation |
+| SQLAlchemy  | Database ORM                   |
+| SQLite      | Relational database            |
+| Pydantic    | API validation                 |
+| LangChain   | RAG/LLM orchestration          |
+| BAAI/bge-m3 | Multilingual embeddings        |
+| Qdrant      | Vector database                |
+| BM25        | Keyword retrieval              |
+| RRF         | Retrieval fusion               |
+| OpenRouter  | LLM API gateway                |
 
 ---
 
@@ -232,42 +232,42 @@ The loader automatically discovers `*.txt` files, so new documents can be added 
 
 ### Departments
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/departments` | Create department |
-| GET | `/departments` | Get all departments |
-| GET | `/departments/{id}` | Get department |
-| DELETE | `/departments/{id}` | Delete department |
+| Method | Endpoint            | Description         |
+| ------ | ------------------- | ------------------- |
+| POST   | `/departments`      | Create department   |
+| GET    | `/departments`      | Get all departments |
+| GET    | `/departments/{id}` | Get department      |
+| DELETE | `/departments/{id}` | Delete department   |
 
 ### Students
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/students` | Create student |
-| GET | `/students` | Get all students |
-| GET | `/students/{id}` | Get student |
-| PUT | `/students/{id}` | Update student |
-| DELETE | `/students/{id}` | Delete student |
+| Method | Endpoint         | Description      |
+| ------ | ---------------- | ---------------- |
+| POST   | `/students`      | Create student   |
+| GET    | `/students`      | Get all students |
+| GET    | `/students/{id}` | Get student      |
+| PUT    | `/students/{id}` | Update student   |
+| DELETE | `/students/{id}` | Delete student   |
 
 ### Courses
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/courses` | Create course |
-| GET | `/courses` | Get all courses |
-| GET | `/courses/{id}` | Get course |
-| PUT | `/courses/{id}` | Update course |
-| DELETE | `/courses/{id}` | Delete course |
+| Method | Endpoint        | Description     |
+| ------ | --------------- | --------------- |
+| POST   | `/courses`      | Create course   |
+| GET    | `/courses`      | Get all courses |
+| GET    | `/courses/{id}` | Get course      |
+| PUT    | `/courses/{id}` | Update course   |
+| DELETE | `/courses/{id}` | Delete course   |
 
 ### Enrollments
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/enrollments` | Create enrollment |
-| GET | `/enrollments` | Get enrollments |
-| GET | `/students/{id}/courses` | Get student's courses |
-| GET | `/courses/{id}/students` | Get course students |
-| DELETE | `/enrollments/{id}` | Delete enrollment |
+| Method | Endpoint                 | Description           |
+| ------ | ------------------------ | --------------------- |
+| POST   | `/enrollments`           | Create enrollment     |
+| GET    | `/enrollments`           | Get enrollments       |
+| GET    | `/students/{id}/courses` | Get student's courses |
+| GET    | `/courses/{id}/students` | Get course students   |
+| DELETE | `/enrollments/{id}`      | Delete enrollment     |
 
 ### UniAssist
 
@@ -377,6 +377,8 @@ The index should be rebuilt when the knowledge base changes, not for every quest
 
 ```bash
 cd backend
+python -m uvicorn app.main:app --reload
+or
 uvicorn app.main:app --reload
 ```
 

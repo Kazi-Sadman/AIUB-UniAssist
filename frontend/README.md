@@ -1,7 +1,7 @@
-# Registrar — University Records Console
+# AIUB UniAssist
 
-A React + Vite + Tailwind admin dashboard for your FastAPI university backend
-(Departments / Students / Courses / Enrollments).
+A React + Vite + Tailwind frontend for your FastAPI university backend
+(Departments / Students / Courses / Enrollments) and the UniAssist AI (RAG) chat.
 
 ## 1. Run the backend first
 
@@ -48,14 +48,31 @@ backend URL, copy `.env.example` to `.env` and change `VITE_API_URL`.
 ```
 frontend/
 ├─ src/
-│  ├─ api/              axios calls, one file per resource
-│  ├─ components/       forms, sidebar, modal, stat cards, empty states
-│  ├─ pages/             Dashboard, DepartmentsPage, StudentsPage, CoursesPage, EnrollmentsPage
+│  ├─ api/              axios calls, one file per resource (axiosClient, departmentApi, studentApi,
+│  │                    courseApi, enrollmentApi, ragApi)
+│  ├─ components/       forms, sidebar, modal, stat cards, table search, chat box,
+│  │                    AnimatedParticleBackground
+│  ├─ pages/            Dashboard, Departments, Students, Courses, Enrollments, UniAssist,
+│  │                    GlobalSearchPage, SystemHealthPage, SettingsPage
 │  ├─ context/          toast notification provider
-│  ├─ App.jsx           routes
+│  ├─ App.jsx           layout, routes, particle on/off preference
 │  └─ main.jsx          entry point
 └─ package.json
 ```
+
+## Floating particle background
+
+`AnimatedParticleBackground.jsx` draws slow dots on a full-screen `<canvas>` behind the app.
+It never blocks clicks (`pointer-events: none`), pauses when the tab is hidden, shows a still
+frame when your system asks for reduced motion, and can be switched off on the Settings page.
+
+## Extra pages
+
+- **Global search** filters data from the existing list endpoints in the browser.
+- **System health** calls the existing list endpoints and shows status and response time.
+  It does not call `POST /api/chat` (that would run a real RAG query). A richer check would need
+  a backend `GET /health` endpoint, which this frontend does not assume exists.
+- **Settings** toggles the particles and shows the API address (set it with `VITE_API_URL`).
 
 ## Notes on the backend routes this UI depends on
 
