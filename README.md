@@ -1,5 +1,9 @@
 # AIUB UniAssist
 
+**Live Demo:** [aiub-uni-assist.vercel.app](https://aiub-uni-assist.vercel.app/)
+
+**GitHub Repository:** [AIUB-UniAssist](https://github.com/Kazi-Sadman/AIUB-UniAssist)
+
 **A Hybrid RAG-Powered University Information and Course Management System**
 
 AIUB UniAssist is a full-stack university information and course management platform designed for American International University-Bangladesh (AIUB). It combines a traditional University Course Enrollment System with an AI-powered Hybrid Retrieval-Augmented Generation (RAG) assistant.
